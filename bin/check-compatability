@@ -2,19 +2,15 @@
 
 use strict;
 use DBI;
-use FindBin;
-use lib "$FindBin::Bin/../lib/perl";
-use RnaSeqHandlerCommon;
-use File::Copy;
 
-# This script will be provided a stream, on STDIN, of newline delmited pairs of
+# This script takes a stream on STDIN of newline delmited pairs of
 # dependency names and versions, with the name and version being separated by a
 # single tab character.
 
-# It will output:
-# Exit code 0 - compatible
-# Exit code 1 - incompatible.  STDOUT will contain message
-# Other exit code - system error.  STDERR will contain log info.
+# It outputs:
+#   Exit code 0 - compatible
+#   Exit code 1 - incompatible.  STDOUT will contain message
+#   Other exit code - system error.  STDERR will contain log info.
 
 # The expected dependency info for an Rna Seq or BigWig dataset is a single line in STDIN of the form:
 # organism_name\tversion
