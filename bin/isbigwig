@@ -20,4 +20,4 @@ exit 2 if there is a system err
 if len(sys.argv) != 2:
     usage()
 bw = pyBigWig.open(sys.argv[1])
-print(bw.isBigWig());
+bw.isBigWig() # exits with non-zero if not bigwig
