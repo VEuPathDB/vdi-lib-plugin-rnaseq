@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+import pyBigWig
+import sys
+
+def usage():
+    msg = """
+Check if a file is a valid bigwig file
+
+Usage:  isbigwig bigwig_file
+
+exit 0 if valid bigwig
+exit 1 if not valid
+exit 2 if there is a system err
+"""
+    print(msg, file=sys.stderr)
+    sys.exit(2)
+
+
+if len(sys.argv) != 2:
+    usage()
+bw = pyBigWig.open(sys.argv[1])
+print(bw.isBigWig());
