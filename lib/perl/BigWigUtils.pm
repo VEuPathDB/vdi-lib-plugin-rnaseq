@@ -14,7 +14,7 @@ sub installBwFile {
   copy($bwFile, "$ENV{USER_DATASETS_DIR}/$userDatasetId") or die "Copy of '$bwFile' to '$ENV{USER_DATASETS_DIR}/$userDatasetId' failed: $!";
 }
 
-sub deleteUserdatasetDir {
+sub deleteUserDatasetDir {
   my ($udDirPath) = @_;
 
   if (-e $udDirPath) {
