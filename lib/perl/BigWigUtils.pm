@@ -1,4 +1,4 @@
-package RnaSeqHandlerCommon;
+package BigWigUtils;
 
 use strict;
 use Exporter;
