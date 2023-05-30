@@ -54,8 +54,11 @@ my $stmt = $dbh->prepare($latestBuildNumberSql);
 $stmt->execute($genomeInfo[0]);
 my $version = $stmt->fetchrow_array();
 if (!$version) {
-  print STDOUT "Can't find version info for organism name '$genomeInfo[0]'\n";
+  print STDOUT "Unrecognized organism '$genomeInfo[0]'\n";
   exit 1;
 }
 
-exit ($version != $genomeInfo[1]);
+if ($version != $genomeInfo[1]) {
+  print STDOUT "Required $genomeInfo[0] version '$version' is not compatible with current version '$genomeInfo[0]'\n";
+  exit 1;
+}
