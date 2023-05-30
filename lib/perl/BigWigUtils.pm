@@ -15,6 +15,7 @@ sub installBwFile {
     mkdir("$ENV{USER_DATASETS_DIR}/$userDatasetId") || die "Can't create user dataset directory '$ENV{USER_DATASETS_DIR}/$userDatasetId' $!";
   }
 
+  print STDERR "Creating file '$ENV{USER_DATASETS_DIR}/$userDatasetId/$bwFile'\n";
   copy($bwFile, "$ENV{USER_DATASETS_DIR}/$userDatasetId") or die "Copy of '$bwFile' to '$ENV{USER_DATASETS_DIR}/$userDatasetId' failed: $!";
 }
 
