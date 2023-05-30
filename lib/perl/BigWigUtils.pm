@@ -23,6 +23,7 @@ sub deleteUserDatasetDir {
   if (-e $udDirPath) {
     opendir(my $udDir, $udDirPath) or die "Cannot open directory '$udDirPath': $!\n";
     foreach my $file (readdir $udDir) {
+      next if $file =~ /^\.+$/;
       die "Unexpected directory '$file' in user dataset directory '$udDirPath'\n" if -d "$udDirPath/$file";
       unlink("$udDirPath/$file") || die "Could not delete file '$udDirPath/$file\n";
     }
