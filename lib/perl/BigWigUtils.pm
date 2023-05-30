@@ -2,6 +2,7 @@ package BigWigUtils;
 
 use strict;
 use Exporter;
+use File::Copy;
 our @ISA = 'Exporter';
 our @EXPORT = qw(installBwFile deleteUserDatasetDir);
 
