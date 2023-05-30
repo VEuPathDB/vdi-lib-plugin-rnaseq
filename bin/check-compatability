@@ -59,6 +59,6 @@ if (!$version) {
 }
 
 if ($version != $genomeInfo[1]) {
-  print STDOUT "Required $genomeInfo[0] version '$version' is not compatible with current version '$genomeInfo[0]'\n";
+  print STDOUT "Required $genomeInfo[0] version '$version' is not compatible with current version '$version'\n";
   exit 1;
 }
