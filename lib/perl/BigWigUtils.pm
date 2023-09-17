@@ -7,18 +7,11 @@ our @ISA = 'Exporter';
 our @EXPORT = qw(installBwFile deleteUserDatasetDir);
 
 sub installBwFile {
-  my ($userDatasetId, $bwFile, $userDatasetsDir) = @_;
+  my ($bwFile, $dataFilesDir) = @_;
 
-  my $userDatasetDir = "$userDatasetsDir/$userDatasetId";
 
-  # initialize dir first time through
-  unless ( -e $userDatasetDir) {
-    print STDERR "Creating directory $userDatasetDir\n";
-    mkdir($userDatasetDir) || die "Can't create user dataset directory '$userDatasetDir' $!";
-  }
-
-  print STDERR "Copying file '$bwFile' to '$userDatasetDir'\n";
-  copy($bwFile, $userDatasetDir) or die "Copy of '$bwFile' to '$userDatasetDir' failed: $!";
+  print STDERR "Copying file '$bwFile' to '$dataFilesDir'\n";
+  copy($bwFile, $dataFilesDir) or die "Copy of '$bwFile' to '$dataFilesDir' failed: $!";
 }
 
 sub deleteUserDatasetDir {
