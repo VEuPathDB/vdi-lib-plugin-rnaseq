@@ -12,6 +12,7 @@ sub installBwFile {
 
   print STDERR "Copying file '$bwFile' to '$dataFilesDir'\n";
   copy($bwFile, $dataFilesDir) or die "Copy of '$bwFile' to '$dataFilesDir' failed: $!";
+  chmod(0664, "$dataFilesDir/$bwFile") or die "Could not chmod $dataFilesDir/$bwFile\n";
 }
 
 sub deleteUserDatasetDir {
