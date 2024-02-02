@@ -32,12 +32,12 @@ if (<STDIN>) {
   exit 1;
 }
 
-my @whatever = split(/_/, $genomeInfo[0]);  # eg PlasmoDB-51_Pfalciparum3D7_Genome
-die "invalid genome resource format: $genomeInfo[0]" unless scalar(@whatever) == 3;
-my $orgNameForFiles = $whatever[1];
+# extract org name from eg PlasmoDB-51_Pfalciparum3D7_Genome
+$genomeInfo[0] =~ /^[A-z]-\d+_(.+)_Genome/ || die "Invalid genome resource format: $genomeInfo[0]\n";
+my $orgNameForFiles = $1;
 
 my $dbh = DBI->connect("dbi:$ENV{DB_PLATFORM}://$ENV{DB_HOST}:$ENV{DB_PORT}/$ENV{DB_NAME}", $ENV{DB_USER}, $ENV{DB_PASS})
-    || die "Couldn't connect to database: " . DBI->errstr;
+    || die "Couldn't connect to database: " . DBI->errstr . "\n";
 $dbh->{RaiseError} = 1;
 
 my $latestBuildNumberSql = "
