@@ -63,7 +63,7 @@ if (!$version) {
   exit 1;
 }
 
-if ($version <= $genomeInfo[1]) {
+if ($version > $genomeInfo[1]) {
   print STDOUT "Your dataset is based on $genomeInfo[0] version '$genomeInfo[1]' which is not compatible with version '$version' currently on the website\n";
   exit 1;
 }
