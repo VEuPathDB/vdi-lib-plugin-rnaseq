@@ -57,8 +57,8 @@ FROM (
 
 my $stmt = $dbh->prepare($latestBuildNumberSql);
 $stmt->execute($orgNameForFiles);
-my $version = $stmt->fetchrow_array();
-if (!$version) {
+my ($version) = $stmt->fetchrow_array();
+if (!defined $version) {
   print STDOUT "Unrecognized organism '$genomeInfo[0]'\n";
   exit 1;
 }
