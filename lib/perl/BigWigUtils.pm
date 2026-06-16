@@ -19,10 +19,13 @@ sub installBwFile {
 
 # return invalid message or 0
 sub validateBwFile {
-  my ($dir, $fileName) = @_;
-  return "Invalid bigwig file: $fileName" if system("isbigwig $dir/$fileName");
-  return "Bigwig file too big (> 500M): $fileName" if -s "$dir/$fileName" > (5 * 1024 * 1024);
+  my ($filePath) = @_;
+  my $fileName = basename($filePath);
+  return "Invalid bigwig file: $fileName" if system("isbigwig $filePath");
+  my $sz =  -s $filePath;
+  return "Bigwig file too big (> 500M): $fileName ($sz)" if ($sz > (500 * 1024 * 1024));
   return 0;
 }
+
 
 1;
