@@ -10,6 +10,9 @@ our @EXPORT = qw(installBwFile, validateBwFile);
 sub installBwFile {
   my ($bwFile, $dataFilesDir) = @_;
 
+  # .bw extension needed for jbrowse
+  $bwFile =~ s/\.bigwig$/.bw/;
+  $bwFile = ($bwFile =~ /\.bw$/)? $bwFile : "$bwFile.bw";
 
   print STDERR "Copying file '$bwFile' to '$dataFilesDir'\n";
   copy($bwFile, $dataFilesDir) or die "Copy of '$bwFile' to '$dataFilesDir' failed: $!";
