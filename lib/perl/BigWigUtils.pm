@@ -5,19 +5,18 @@ use Exporter;
 use File::Copy;
 use File::Basename;
 our @ISA = 'Exporter';
-our @EXPORT = qw(installBwFile, validateBwFile);
+our @EXPORT = qw(installBwFile validateBwFile);
 
 sub installBwFile {
-  my ($bwFile, $dataFilesDir) = @_;
+  my ($origBwFile, $dataFilesDir) = @_;
 
   # .bw extension needed for jbrowse
+  my $bwFile = basename($origBwFile);
   $bwFile =~ s/\.bigwig$/.bw/;
-  $bwFile = ($bwFile =~ /\.bw$/)? $bwFile : "$bwFile.bw";
-
-  print STDERR "Copying file '$bwFile' to '$dataFilesDir'\n";
-  copy($bwFile, $dataFilesDir) or die "Copy of '$bwFile' to '$dataFilesDir' failed: $!";
-  my $f = basename($bwFile);
-  chmod(0664, "$dataFilesDir/$f") or die "Could not chmod $dataFilesDir/$f\n";
+  $bwFile = ($bwFile =~ /\.bw$/) ? $bwFile : "$bwFile.bw";
+  print STDERR "Copying file '$origBwFile' to '$dataFilesDir/$bwFile'\n";
+  copy($origBwFile, "$dataFilesDir/$bwFile") or die "Copy of '$origBwFile' to '$dataFilesDir/$bwFile' failed: $!";
+  chmod(0664, "$dataFilesDir/$bwFile") or die "Could not chmod $dataFilesDir/$bwFile\n";
 }
 
 # return invalid message or 0
