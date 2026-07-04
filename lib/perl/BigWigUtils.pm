@@ -7,9 +7,9 @@ use File::Basename;
 use DBI;
 use JSON qw( );
 our @ISA = 'Exporter';
-our @EXPORT = qw(installBwFile validateBwFile validateBwSequences validationError getRefGenome VALIDATION_ERROR_CODE);
+our @EXPORT = qw(installBwFile validateBwFile validateBwSequences validationError getRefGenome $VALIDATION_ERROR_CODE);
 
-my $VALIDATION_ERROR_CODE = 99;
+our $VALIDATION_ERROR_CODE = 99;
 
 sub installBwFile {
   my ($origBwFile, $dataFilesDir, $dbh, $orgNameForFiles) = @_;
