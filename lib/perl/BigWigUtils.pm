@@ -7,7 +7,7 @@ use File::Basename;
 use DBI;
 use JSON qw( );
 our @ISA = 'Exporter';
-our @EXPORT = qw(installBwFile validateBwFile validateBwSequences validationError getRefGenome);
+our @EXPORT = qw(installBwFile validateBwFile validateBwSequences validationError getRefGenome VALIDATION_ERROR_CODE);
 
 my $VALIDATION_ERROR_CODE = 99;
 
