@@ -68,7 +68,7 @@ and o.internal_abbrev = s.org_abbrev
 
   my @examples = @unfoundIds > 10 ? @unfoundIds[0..4] : @unfoundIds;
   my $uCount = @unfoundIds;
-  validationError("bigWig file $fileName contains $uCount of $count IDs that do not match our version of $orgNameForFiles. For example: " . join(",", @examples) .". Seems like the wrong genome.") if $uCount > ($count * .2);
+  validationError("bigWig file $fileName contains $uCount of $count IDs that do not match our version of $orgNameForFiles.\n  For example: " . join(",", @examples) .".\n  Seems like the wrong genome.") if $uCount > ($count * .2);
 }
 
 
