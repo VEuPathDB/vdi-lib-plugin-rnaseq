@@ -6,7 +6,8 @@ use File::Copy;
 use File::Basename;
 use DBI;
 use JSON qw( );
-use RnaSeqUtils;
+use VdiPerlUtils;
+
 our @ISA = 'Exporter';
 our @EXPORT = qw(installBwFile validateBwFile validateBwSequences);
 
